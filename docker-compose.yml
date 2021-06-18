@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+
+   ap-it:
+    image: packit/ap-it:latest
+    restart: always
+    container_name: ap-it
+    ports:      
+        - "3000:3000"
+    networks:
+      pack-it-network:
+        aliases:
+         - ap-it
+  
+networks:
+    pack-it-network:
