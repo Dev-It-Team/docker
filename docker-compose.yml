@@ -5,6 +5,7 @@ services:
    ap-it:
     image: packit/ap-it:latest
     restart: always
+    pull: true
     container_name: ap-it
     ports:      
         - "3000:3000"
