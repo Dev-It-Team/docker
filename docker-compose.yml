@@ -11,12 +11,11 @@ services:
     networks:
         - pack-it-network
 
-   data-server:
-    image: packit/data-server:latest
+   mssql-server:
+    image: packit/mssql-server:latest
     restart: always
-    container_name: data-server
+    container_name: mssql-server
     ports: 
-        - "27017:27017"
         - "1433:1433"
     networks:
         - pack-it-network
