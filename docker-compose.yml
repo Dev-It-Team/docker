@@ -5,14 +5,21 @@ services:
    ap-it:
     image: packit/ap-it:latest
     restart: always
-    pull: true
     container_name: ap-it
     ports:      
         - "3000:3000"
     networks:
-      pack-it-network:
-        aliases:
-         - ap-it
+        - pack-it-network
+
+   data-server:
+    image: packit/data-server:latest
+    restart: always
+    container_name: data-server
+    ports: 
+        - "27017:27017"
+        - "1433:1433"
+    networks:
+        - pack-it-network
   
 networks:
     pack-it-network:
