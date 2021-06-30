@@ -11,8 +11,9 @@ services:
         - mongodb-server
     ports:      
         - "3000:3000"
-    network_mode: host
-    command: ["./wait-for-it.sh", "db:1433", "-t", "5", "--", "pnpm", "start"]
+    networks:
+        - packit
+    command: ["./wait-for-it.sh", "mssql-server:1433", "-t", "15", "--", "pnpm", "start"]
 
    mssql-server:
     image: packit/mssql-server:latest
@@ -20,7 +21,8 @@ services:
     container_name: mssql-server
     ports: 
         - "1433:1433"
-    network_mode: host
+    networks:
+        - packit
 
    mongodb-server:
     image: packit/nosql-server:latest
@@ -28,6 +30,10 @@ services:
     container_name: mongodb-server
     ports:
         - "27017:27017"
-    network_mode: host
+    networks:
+        - packit
+
+networks:
+    packit:
 
     
