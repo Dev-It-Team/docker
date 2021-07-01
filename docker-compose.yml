@@ -32,6 +32,15 @@ services:
         - "27017:27017"
     networks:
         - packit
+        
+   deliver-it:
+    image: packit/deliverit:latest
+    restart: always
+    container_name: deliver-it
+    ports:      
+        - "8080:80"
+    networks:
+        - packit
 
 networks:
     packit:
